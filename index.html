@@ -1,108 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Music Player</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ==" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-  <div class="wrapper">
-    <div class="top-bar">
-      <i class="material-icons">expand_more</i>
-      <span>Now Playing</span>
-      <i class="material-icons">more_horiz</i>
-    </div>
-    <div class="img-area">
-      <img src="images/music-1.jpg" alt="">
-    </div>
-    <div class="song-details">
-      <p class="name">Mast Magan</p>
-      <p class="artist">Arijit Singh</p>
-    </div>
-    <div class="progress-area">
-      <div class="progress-bar">
-        <audio id="main-audio" src="songs/music-1.mp3"></audio>
-      </div>
-      <div class="song-timer">
-        <span class="current-time">0:00</span>
-        <span class="max-duration">3:40</span>
-      </div>
-    </div>
-    <div class="controls">
-      <i id="repeat-plist" class="material-icons" title="Playlist looped">repeat</i>
-      <i id="prev" class="material-icons">skip_previous</i>
-      <div class="play-pause">
-        <i class="material-icons play">play_arrow</i>
-      </div>
-      <i id="next" class="material-icons">skip_next</i>
-      <i id="more-music" class="material-icons">queue_music</i>
-    </div>
-    <div class="music-list">
-      <div class="header">
-        <div class="row">
-          <i class= "list material-icons">queue_music</i>
-          <span>Music list</span>
-        </div>
-        <i id="close" class="material-icons">close</i>
-      </div>
-      <ul>
-        <!-- here li list are coming from js -->
-        <li li-index="1" onclick="clicked(this)" class="playing">
-          <div class="row">
-            <span>Mast Magan</span>
-            <p>Arijit Singh</p>
-          </div>
-          <span id="music-1" class="audio-duration" t-duration="4:38">4:38</span>
-          <audio class="music-1" src="songs/music-1.mp3"></audio>
-        </li>
-        <li li-index="2" onclick="clicked(this)" class="playing">
-          <div class="row">
-            <span>Raabta</span>
-            <p>Arijit Singh</p>
-          </div>
-          <span id="music-2" class="audio-duration" t-duration="4:03">4:03</span>
-          <audio class="music-2" src="songs/music-2.mp3"></audio>
-        </li>
-        <li li-index="3" onclick="clicked(this)" class="playing">
-          <div class="row">
-            <span>Tose Naina</span>
-            <p>Mithoon</p>
-          </div>
-          <span id="music-3" class="audio-duration" t-duration="4:23">4:23</span>
-          <audio class="music-3" src="songs/music-3.mp3"></audio>
-        </li>
-        <li li-index="4" onclick="clicked(this)" class="playing">
-          <div class="row">
-            <span>Tu Hi Hai</span>
-            <p>Arijit Singh</p>
-          </div>
-          <span id="music-4" class="audio-duration" t-duration="3:48">3:48</span>
-          <audio class="music-4" src="songs/music-4.mp3"></audio>
-        </li>
-        <li li-index="5" onclick="clicked(this)" class="playing">
-          <div class="row">
-            <span>Tum Hi Ho</span>
-            <p>Arijit Singh</p>
-          </div>
-          <span id="music-5" class="audio-duration" t-duration="3:20">Playing</span>
-          <audio class="music-5" src="songs/music-5.mp3"></audio>
-        </li>
-        <li li-index="6" onclick="clicked(this)" class="playing">
-          <div class="row">
-            <span>Humdard</span>
-            <p>Arijit Singh</p>
-          </div>
-          <span id="music-6" class="audio-duration" t-duration="4:19">Playing</span>
-          <audio class="music-6" src="songs/music-6.mp3"></audio>
-        </li>
-      </ul>
-    </div>
-  </div>
 
-  <script src="js/music-list.js"></script>
-  <script src="js/script.js"></script>
+      <div class="main_div">
+           <div class="music_container">
+               <h2 id="title">
+                   Mast Magan
+               </h2>
+               <h3 id="artist">Arijit Singh</h3>
+              <div class="img_container">
+                 <img src="images\music-1.jpg" alt="">
+              </div>
+              <audio src="songs\music-1.mp3" ></audio>
+              <div class="music_controls">
+                <i class="fas fa-backward" id="prev" title="previuos"></i>
+                <i class="fas fa-play main_button" id="play" title="play"></i>
+                <i class="fas fa-forward" id="next" title="next"></i>
+              </div>
+           </div>  
+               
+      </div>
+       
+      <Script>
+          const music = document.querySelector("audio");
+          const img = document.querySelector('img');
+          const play =document.getElementById('play');
+          const artist =document.getElementById('artist');
+          const title =document.getElementById("title");
+          const prev =document.getElementById('prev');
+          const next =document.getElementById('next');
+
+
+   const musicList = [
+    {
+      name: "Mast Magan",
+      artist: "Arijit Singh",
+      img: "music-1",
+      src: "music-1"
+    },
+    {
+      name: "Raabta",
+      artist: "Arijit singh",
+      img: "music-2",
+      src: "music-2"
+    },
+    {
+      name: "Tose Naina",
+      artist: "Mithoon",
+      img: "music-3",
+      src: "music-3"
+    },
+    {
+      name: "Tu Hi Hai",
+      artist: "Arijit Singh",
+      img: "music-4",
+      src: "music-4"
+    },
+    {
+      name: "Tum Hi Ho",
+      artist: "Arijit Singh",
+      img: "music-5",
+      src: "music-5"
+    },
+    {
+      name: "Humdard",
+      artist: "Arijit Singh",
+      img: "music-6",
+      src: "music-6"
+    },
+  ];
+
+          
+
+          isPlaying = false;
+          //for playing function
+        const playMusic = () =>{
+              
+              isPlaying=true;
+              music.play(); 
+              play.classList.replace("fa-play", "fa-pause");
+              img.classList.add("anime");
+          };
+           
+          //for pause function
+          const pauseMusic = ()=>{
+              isPlaying= false;
+              music.pause();
+              play.classList.replace("fa-pause","fa-play");
+              img.classList.remove("anime");
+          };
+        
+          play.addEventListener('click', () =>{
+              if(isPlaying){
+                  pauseMusic();
+              }else{
+                  playMusic();
+              }
+          });
+
+          //changing Music Data
+
+          const loadSong =(musicList)=>{
+              title.textContent = musicList.name;
+              artist.textContent = musicList.artist;
+              music.src = "songs/" + musicList.src + ".mp3";
+              img.src= "images/" + musicList.img + ".jpg"
+          }
+
+          songsIndex = 0;
+          // loadSong(songs[2]);
+         
+           const nextSongs = () => {
+               songsIndex = (songsIndex + 1) % musicList.length;
+               loadSong(musicList[songsIndex]);
+               playMusic();
+           };
+
+           const prevSongs = () => {
+               songsIndex = (songsIndex - 1 +  musicList.length) % musicList.length;
+               loadSong(musicList[songsIndex]);
+               playMusic();
+           };
+            
+           next.addEventListener("click", nextSongs);
+           prev.addEventListener("click", prevSongs);
+
+      </Script>
 
 </body>
 </html>
